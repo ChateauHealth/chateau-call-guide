@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chateau Health & Wellness Call System Guide</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-osx-font-smoothing: grayscale;
+            background-color: #f8fafc; /* Light blue-gray background */
+            color: #334155; /* Darker text for readability */
+            line-height: 1.6;
+        }
+        summary {
+            cursor: pointer;
+            font-weight: 600;
+            padding: 1rem 1.5rem;
+            border-bottom: 1px solid #e2e8f0; /* Light gray border */
+            border-radius: 0.5rem;
+            background-color: #f1f5f9; /* Lighter background for summary */
+            transition: background-color 0.2s ease-in-out;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        summary:hover {
+            background-color: #e2e8f0; /* Slightly darker on hover */
+        }
+        details[open] summary {
+            border-bottom-left-radius: 0;
+            border-bottom-right-radius: 0;
+            background-color: #e2e8f0;
+        }
+        details[open] summary::after {
+            transform: rotate(90deg);
+        }
+        summary::after {
+            content: '▶'; /* Right arrow for closed state */
+            font-size: 0.8rem;
+            margin-left: 0.75rem;
+            transition: transform 0.2s ease-in-out;
+        }
+        .content-body {
+            padding: 1rem 1.5rem 1.5rem;
+            background-color: #ffffff; /* White background for content */
+            border-bottom-left-radius: 0.5rem;
+            border-bottom-right-radius: 0.5rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+        /* Custom styles for smaller bullet points */
+        .list-circle li::before {
+            content: "•"; /* Use a simple dot */
+            color: #64748b; /* A darker gray for contrast */
+            display: inline-block; /* Required for the content property to work */
+            width: 1em; /* Space before the text */
+            margin-left: -1em; /* Pull the dot left to align text */
+            font-size: 1.2em; /* Make the dot slightly larger */
+            line-height: 1; /* Align vertically with text */
+        }
+        .list-circle li {
+            padding-left: 1em; /* Indent the text */
+            text-indent: -1em; /* Pull back the first line (the dot) */
+        }
+
+        /* Flow Diagram Specific Styles */
+        .flow-box {
+            border: 1px solid #cbd5e1; /* slate-300 */
+            border-radius: 0.5rem;
+            padding: 0.75rem 1rem;
+            background-color: #f0f4f8; /* blue-gray-100 */
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+            line-height: 1.4;
+            color: #334155; /* slate-700 */
+            box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+        }
+        .flow-arrow {
+            text-align: center;
+            font-size: 1.5rem;
+            color: #64748b; /* slate-500 */
+            margin: 0.25rem 0;
+            font-weight: bold;
+        }
+        .flow-indent {
+            margin-left: 2rem;
+            padding-left: 0.5rem;
+            border-left: 2px dashed #94a3b8; /* slate-400 */
+        }
+    </style>
+</head>
+<body class="p-4 sm:p-6 md:p-8 lg:p-10 max-w-5xl mx-auto">
+
+    <header class="text-center mb-10 p-6 bg-gradient-to-r from-blue-500 to-indigo-600 text-white rounded-xl shadow-lg">
+        <h1 class="text-4xl sm:text-5xl font-extrabold mb-2">Chateau Health & Wellness</h1>
+        <p class="text-lg sm:text-xl font-light">Your Guide to Our Current Call System</p>
+    </header>
+
+    <main class="space-y-8">
+        <section class="bg-white p-6 rounded-xl shadow-md">
+            <h2 class="text-2xl font-bold text-gray-800 mb-4">Introduction</h2>
+            <p class="text-gray-700">
+                This document serves as a comprehensive guide to our current phone system and how incoming calls are routed. We utilize a layered system involving <strong>Crexendo</strong>, <strong>CallRail</strong>, and for a transitional period, <strong>GoTo</strong>. Understanding these flows is crucial for effective communication and client support.
+            </p>
+        </section>
+
+        <!-- Main Line and Admissions Call Flow Section -->
+        <details class="rounded-xl shadow-md overflow-hidden">
+            <summary class="text-xl"><span role="img" aria-label="phone icon">📞</span> 1. Main Line & Admissions Call Flow</summary>
+            <div class="content-body">
+                <p class="mb-4 text-gray-700">
+                    Our primary public-facing number, prominently displayed on our website and Google Business account, is <strong class="text-blue-600">801-877-1272</strong>. When a caller dials this number, they first interact with our <strong>CallRail</strong> automated attendant.
+                </p>
+
+                <h3 class="text-lg font-semibold text-gray-800 mb-2">First Attendant (CallRail)</h3>
+                <pre class="bg-gray-100 p-4 rounded-lg text-sm whitespace-pre-wrap mb-4 border border-gray-200">
+"Thank you for calling Chateau Health & Wellness. If this is a medical emergency or you are in a crisis, please hang up and dial 911 immediately. For information on our services or to begin the admissions process, please press 1. For all other inquiries, including how to contact a loved one in treatment, please press 2."</pre>
+
+                <ul class="list-none list-circle pl-6 text-gray-700 space-y-2">
+                    <li>
+                        <strong class="text-blue-600">If the caller presses 1 (Admissions):</strong>
+                        <ul class="list-disc pl-6 mt-1 space-y-1">
+                            <li>This triggers a <strong>CallRail workflow</strong> designed to connect to our admissions team.</li>
+                            <li>The system first attempts a <strong>Simulcall</strong>, ringing <strong>Colin (801-819-8772)</strong> and <strong>Tyler (801-669-1248)</strong> for 15 seconds.</li>
+                            <li>If no one answers, a second Simulcall is initiated, ringing <strong>Colin</strong>, <strong>Tyler</strong>, <strong>Brad (405-245-5139)</strong>, and <strong>Kevin (385-539-8326)</strong> simultaneously.</li>
+                            <li>If still unanswered, the call is directed to a <strong>CallRail voicemail</strong>.</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <strong class="text-blue-600">If the caller presses 2 (Additional Options):</strong>
+                        <ul class="list-disc pl-6 mt-1 space-y-1">
+                            <li>This option forwards the call to our main <strong>Crexendo auto attendant (385-534-0836)</strong>.</li>
+                        </ul>
+                    </li>
+                </ul>
+
+                <h3 class="text-lg font-semibold text-gray-800 mt-6 mb-2">Admissions Line Porting Update:</h3>
+                <p class="mb-4 text-gray-700">
+                    Our dedicated admissions number, <strong class="text-blue-600">801-507-5031</strong>, has successfully ported over from CallRail to Crexendo. However, it is currently configured within Crexendo to forward calls back to the CallRail number <strong class="text-blue-600">385-203-8631</strong>. This setup is specifically maintained for analytical data and business metrics that integrate with our CRM and CallRail.
+                </p>
+            </div>
+        </details>
+
+        <!-- Crexendo Auto Attendant Section -->
+        <details class="rounded-xl shadow-md overflow-hidden">
+            <summary class="text-xl"><span role="img" aria-label="building icon">🏢</span> 2. Crexendo Auto Attendant (Temporary Voice Attendant)</summary>
+            <div class="content-body">
+                <p class="mb-4 text-gray-700">
+                    This is our primary internal call routing system, reached when a caller selects Option 2 from the initial CallRail attendant.
+                </p>
+
+                <h3 class="text-lg font-semibold text-gray-800 mb-2">Temporary Voice Attendant Message:</h3>
+                <pre class="bg-gray-100 p-4 rounded-lg text-sm whitespace-pre-wrap mb-4 border border-gray-200">
+"If you know your parties extension dial it now. Otherwise, please select one of the following options. To request a call back and leave a message, press 1. To leave a message for a therapist or counselor, press 2. To leave a message for a current client, press 3. For medical records requests, our address, or fax number, press 4. To reach the medical department, press 5. To reach the front desk press 6, to repeat these options please press 0."</pre>
+
+                <ul class="list-none list-circle pl-6 text-gray-700 space-y-2">
+                    <li>
+                        <strong class="text-blue-600">Option 1 (Front Desk Voicemail):</strong> Automatically connects to the <strong>Front Desk voicemail (Ext. 1000)</strong>.
+                    </li>
+                    <li>
+                        <strong class="text-blue-600">Option 2 (Therapist Voicemail Attendant):</strong> Leads to a separate sub-menu for leaving messages for specific therapists. This is Ext. 9003.
+                        <h4 class="text-md font-medium text-gray-700 mt-2 mb-1">Therapist Voicemail Attendant Message:</h4>
+                        <pre class="bg-gray-100 p-4 rounded-lg text-sm whitespace-pre-wrap mb-2 border border-gray-200">
+"If you would like to leave a message for Clinical Director, Ben Pearson press one. to leave a message for Alan Brock, press 2. for Hannah Leema, press 3. For Jackie Nielsen, press 4. For Maren Eberhard, press 5. For Shannon Weaver or Nancy Luke, Press 6. For Rob James, press 7. For Stacey Stocking, press 8. To repeat these options, press 0."</pre>
+                        <ul class="list-disc pl-6 mt-1 space-y-1">
+                            <li>Ben Pearson: Ext. 1011</li>
+                            <li>Alan Brock: Ext. 1012</li>
+                            <li>Hannah Leema: Ext. 1007</li>
+                            <li>Jackie Nielsen: Ext. 1008</li>
+                            <li>Maren Eberhard: Ext. 1006</li>
+                            <li>Shannon Weaver / Nancy Luke: Ext. 1013 (Voicemail connected to Shannon's phone in Crexendo)</li>
+                            <li>Rob James: Ext. 1015</li>
+                            <li>Stacey Stocking: Ext. 1005</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <strong class="text-blue-600">Option 3 (Client Callback / Program Staff):</strong> Connects to the <strong>West Wing program staff voicemail (Lobby W - Ext. 1001)</strong>.
+                        <ul class="list-disc pl-6 mt-1 space-y-1">
+                            <li>Voicemails are forwarded to the `support@chateaurecovery.com` email group.</li>
+                            <li>Program staff can access voicemails using PIN <strong>1010</strong>.</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <strong class="text-blue-600">Option 4 (Records/Fax/Address):</strong> Plays a recorded message with our contact information for records requests. This is Ext. 9001.
+                        <h4 class="text-md font-medium text-gray-700 mt-2 mb-1">Fax Address Record Message:</h4>
+                        <pre class="bg-gray-100 p-4 rounded-lg text-sm whitespace-pre-wrap mb-2 border border-gray-200">
+"For medical records requests, please email records at chateau recovery.com or fax: 435-654-1485. Chateau Health & Wellness is located at 400 West, <sub alias="42">fourtytwo</sub> hundred North. In the city of Oakley, Utah, 8 4 0 5 5. Please note - visits are by appointment only. If you would like to hear these options again, press 0 or press 1 return to the previous options."</pre>
+                        <ul class="list-disc pl-6 mt-1 space-y-1">
+                            <li><strong>Fax Number:</strong> <strong class="text-blue-600">435-654-1485</strong> (currently with GoTo, transitioning to Crexendo web portal).</li>
+                            <li><strong>Records Email:</strong> `records@chateaurecovery.com`</li>
+                            <li><strong>Address:</strong> 400 West, 4200 North, Oakley, Utah, 84055.</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <strong class="text-blue-600">Option 5 (Medical Department):</strong> Directs the caller to the <strong>Medical Department (Ext. 1003)</strong>.
+                    </li>
+                    <li>
+                        <strong class="text-blue-600">Option 6 (Front Desk):</strong> Directs the caller to the <strong>Front Desk (Ext. 1000)</strong>.
+                    </li>
+                </ul>
+            </div>
+        </details>
+
+        <!-- GoTo Number Section -->
+        <details class="rounded-xl shadow-md overflow-hidden">
+            <summary class="text-xl"><span role="img" aria-label="refresh icon">🔄</span> 3. GoTo Number Transition</summary>
+            <div class="content-body">
+                <p class="mb-4 text-gray-700">
+                    We are actively working on porting remaining numbers from the GoTo system to Crexendo.
+                </p>
+                <ul class="list-none list-circle pl-6 text-gray-700 space-y-2">
+                    <li>
+                        <strong class="text-blue-600">Current GoTo Number (435-654-1082):</strong>
+                        <ul class="list-disc pl-6 mt-1 space-y-1">
+                            <li>This number currently provides the <strong>same initial auto-attendant options</strong> as our main line.</li>
+                            <li><strong>Option 1:</strong> Forwards to <strong>CallRail</strong> (similar to 801-877-1272 admissions flow).</li>
+                            <li><strong>Option 2:</strong> Forwards to <strong>Crexendo Main Auto Attendant (385-534-0836)</strong>.</li>
+                        </ul>
+                        <span class="block mt-1 text-xs text-gray-500">*Will be ported and assigned to Front Desk (Ext. 1000) in Crexendo.*</span>
+                    </li>
+                    <li>
+                        <strong class="text-blue-600">Fax Number (435-654-1485):</strong>
+                        <ul class="list-disc pl-6 mt-1 space-y-1">
+                            <li>Our primary fax number is still currently with GoTo.</li>
+                            <li>We anticipate it will be fully transitioned to the Crexendo web portal within 48 hours for more convenient sending and receiving of faxes.</li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </details>
+
+        <!-- New: Call Flow Overview (Hierarchical Structure) Section -->
+        <section class="bg-white p-6 rounded-xl shadow-md">
+            <h2 class="text-2xl font-bold text-gray-800 mb-4"><span role="img" aria-label="flowchart icon">➡️</span> Call Flow Overview (Hierarchical Structure)</h2>
+
+            <div class="mb-6">
+                <h3 class="text-lg font-semibold text-gray-800 mb-2">When a Caller Dials Our Main Public Line:</h3>
+                <div class="flow-box">
+                    <strong>📞 Main Public Line: 801-877-1272</strong><br/>
+                    (Located in <strong>CallRail</strong>, public-facing)
+                </div>
+                <div class="flow-arrow">↓ First Attendant (CallRail)</div>
+
+                <div class="flow-indent">
+                    <div class="flow-box bg-blue-50">
+                        <strong>Option 1 (Admissions):</strong> "For information on our services or to begin the admissions process, please press 1."
+                    </div>
+                    <div class="flow-arrow">↓</div>
+                    <div class="flow-indent">
+                        <div class="flow-box bg-green-50">
+                            <strong>CallRail Admissions Workflow:</strong>
+                            <ul class="list-none text-sm ml-2 mt-1 space-y-0.5">
+                                <li>➡️ Simulcall 1 (15s): <strong>Colin (801-819-8772)</strong> & <strong>Tyler (801-669-1248)</strong></li>
+                                <li>➡️ If no answer: Simulcall 2: <strong>Colin</strong>, <strong>Tyler</strong>, <strong>Brad (405-245-5139)</strong>, & <strong>Kevin (385-539-8326)</strong></li>
+                                <li>➡️ If no answer: <strong>CallRail Voicemail</strong></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flow-arrow" style="margin-top: 1.5rem;">↓</div>
+
+                <div class="flow-indent">
+                    <div class="flow-box bg-blue-50">
+                        <strong>Option 2 (Other Inquiries):</strong> "For all other inquiries, including how to contact a loved one in treatment, please press 2."
+                    </div>
+                    <div class="flow-arrow">↓</div>
+                    <div class="flow-indent">
+                        <div class="flow-box bg-purple-50">
+                            <strong>Crexendo Main Auto Attendant: 385-534-0836</strong>
+                            <ul class="list-none text-sm ml-2 mt-1 space-y-0.5">
+                                <li>➡️ <strong>Option 1:</strong> Front Desk Voicemail (Ext. 1000)</li>
+                                <li>➡️ <strong>Option 2 (Ext. 9003):</strong> Therapist Auto Attendant &rarr; Specific Therapist Voicemails (e.g., Ben Pearson Ext. 1011)</li>
+                                <li>➡️ <strong>Option 3 (Ext. 1001):</strong> West Wing Program Staff Voicemail (Lobby W) &rarr; `support@chateaurecovery.com`</li>
+                                <li>➡️ <strong>Option 4 (Ext. 9001):</strong> Recorded Message (Fax: 435-654-1485, Email: `records@chateaurecovery.com`, Address)</li>
+                                <li>➡️ <strong>Option 5 (Ext. 1003):</strong> Medical Department</li>
+                                <li>➡️ <strong>Option 6 (Ext. 1000):</strong> Front Desk</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mb-6 mt-10">
+                <h3 class="text-lg font-semibold text-gray-800 mb-2">Admissions Direct Line Flow:</h3>
+                <div class="flow-box">
+                    <strong>📞 Admissions Direct Line: 801-507-5031</strong><br/>
+                    (Ported to <strong>Crexendo</strong>)
+                </div>
+                <div class="flow-arrow">↓</div>
+                <div class="flow-indent">
+                    <div class="flow-box bg-green-50">
+                        <strong>Routes to CallRail (for Analytics):</strong>
+                        <ul class="list-none text-sm ml-2 mt-1 space-y-0.5">
+                            <li>➡️ Destination: <strong>CallRail Number 385-203-8631</strong></li>
+                            <li>(This ensures analytical data is captured for CRM & CallRail integration.)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mb-6 mt-10">
+                <h3 class="text-lg font-semibold text-gray-800 mb-2">GoTo Temporary Number Flow:</h3>
+                <div class="flow-box">
+                    <strong>📞 GoTo Temporary Number: 435-654-1082</strong><br/>
+                    (Currently in <strong>GoTo</strong>, will be ported to Crexendo for Front Desk Ext. 1000)
+                </div>
+                <div class="flow-arrow">↓ First Attendant (GoTo)</div>
+
+                <div class="flow-indent">
+                    <div class="flow-box bg-blue-50">
+                        <strong>Option 1 (GoTo):</strong> Mirrors Main Line Option 1 (Admissions)
+                    </div>
+                    <div class="flow-arrow">↓</div>
+                    <div class="flow-indent">
+                        <div class="flow-box bg-green-50">
+                            <strong>Forwards to CallRail:</strong> (Triggers CallRail admissions workflow as detailed above)
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flow-arrow" style="margin-top: 1.5rem;">↓</div>
+
+                <div class="flow-indent">
+                    <div class="flow-box bg-blue-50">
+                        <strong>Option 2 (GoTo):</strong> Mirrors Main Line Option 2 (Other Inquiries)
+                    </div>
+                    <div class="flow-arrow">↓</div>
+                    <div class="flow-indent">
+                        <div class="flow-box bg-purple-50">
+                            <strong>Forwards to Crexendo Main Auto Attendant: 385-534-0836</strong>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+
+        <!-- Summary of Key Numbers Section -->
+        <section class="bg-white p-6 rounded-xl shadow-md">
+            <h2 class="text-2xl font-bold text-gray-800 mb-4"><span role="img" aria-label="chart icon">📊</span> Summary of Key Numbers & Roles</h2>
+            <div class="overflow-x-auto rounded-lg border border-gray-200">
+                <table class="min-w-full divide-y divide-gray-200">
+                    <thead class="bg-gray-50">
+                        <tr>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Number</th>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Description</th>
+                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Current System / Routing Details</th>
+                        </tr>
+                    </thead>
+                    <tbody class="bg-white divide-y divide-gray-200">
+                        <tr>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">801-877-1272</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">Main Public Line</td>
+                            <td class="px-6 py-4 text-sm text-gray-700">
+                                Call received by <strong>CallRail</strong>.
+                                <ul class="list-disc list-inside mt-1 space-y-0.5">
+                                    <li><strong>Option 1 (Admissions):</strong> Triggers CallRail workflow &rarr; Simulcall to Colin/Tyler (15s), then Colin/Tyler/Brad/Kevin &rarr; CallRail Voicemail.</li>
+                                    <li><strong>Option 2 (Other Inquiries):</strong> Forwards to <strong>Crexendo Main Auto Attendant (385-534-0836)</strong>.</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">801-507-5031</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">Admissions Direct Line</td>
+                            <td class="px-6 py-4 text-sm text-gray-700">
+                                Ported to <strong>Crexendo</strong>, but currently forwards calls back to <strong>CallRail (385-203-8631)</strong> for analytics.
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">385-203-8631</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">CallRail Admissions Destination (Analytics)</td>
+                            <td class="px-6 py-4 text-sm text-gray-700">
+                                This number is a <strong>CallRail</strong> internal number, used to collect analytical data for admissions calls originating from 801-507-5031.
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">385-534-0836</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">Main Crexendo Auto Attendant</td>
+                            <td class="px-6 py-4 text-sm text-gray-700">
+                                Call received by <strong>Crexendo</strong> (either directly or from 801-877-1272 Option 2).
+                                <ul class="list-disc list-inside mt-1 space-y-0.5">
+                                    <li><strong>Option 1 (Callback):</strong> Front Desk Voicemail (Ext. 1000).</li>
+                                    <li><strong>Option 2 (Therapist Voicemail):</strong> Therapist Auto Attendant (Ext. 9003) &rarr; specific therapist voicemails (e.g., Ben Pearson Ext. 1011).</li>
+                                    <li><strong>Option 3 (Client Callback / Program Staff):</strong> West Wing Program Staff Voicemail (Lobby W - Ext. 1001, emails to `support@chateaurecovery.com`, PIN 1010).</li>
+                                    <li><strong>Option 4 (Records/Fax/Address):</strong> Recorded message with details (Ext. 9001; Fax: 435-654-1485, Email: `records@chateaurecovery.com`, Address).</li>
+                                    <li><strong>Option 5 (Medical Dept.):</strong> Medical Department (Ext. 1003).</li>
+                                    <li><strong>Option 6 (Front Desk):</strong> Front Desk (Ext. 1000).</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">435-654-1082</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">Temporary GoTo Number</td>
+                            <td class="px-6 py-4 text-sm text-gray-700">
+                                Located in <strong>GoTo</strong>. Currently mirrors main attendant options:
+                                <ul class="list-disc list-inside mt-1 space-y-0.5">
+                                    <li><strong>Option 1:</strong> Forwards to <strong>CallRail</strong> (similar to 801-877-1272 admissions flow).</li>
+                                    <li><strong>Option 2:</strong> Forwards to <strong>Crexendo Main Auto Attendant (385-534-0836)</strong>.</li>
+                                </ul>
+                                <span class="block mt-1 text-xs text-gray-500">*Will be ported and assigned to Front Desk (Ext. 1000) in Crexendo.*</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">435-654-1485</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">Fax Number</td>
+                            <td class="px-6 py-4 text-sm text-gray-700">
+                                Currently located in <strong>GoTo</strong>. In process of transitioning to Crexendo web portal for improved management.
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">801-877-6866</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">Transfer from Chateau (GoTo)</td>
+                            <td class="px-6 py-4 text-sm text-gray-700">
+                                This number is called from the <strong>GoTo</strong> dial plan (Option 1).
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">801-819-8772</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">Colin's Personal Cell</td>
+                            <td class="px-6 py-4 text-sm text-gray-700">
+                                Rings as part of a <strong>CallRail Simulcall</strong> for admissions (Option 1 from 801-877-1272).
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">801-669-1248</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">Tyler's Personal Cell</td>
+                            <td class="px-6 py-4 text-sm text-gray-700">
+                                Rings as part of a <strong>CallRail Simulcall</strong> for admissions (Option 1 from 801-877-1272).
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">405-245-5139</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">Brad</td>
+                            <td class="px-6 py-4 text-sm text-gray-700">
+                                Rings as part of the <strong>second CallRail Simulcall</strong> for admissions (if Colin/Tyler don't answer).
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">385-539-8326</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">Kevin</td>
+                            <td class="px-6 py-4 text-sm text-gray-700">
+                                Rings as part of the <strong>second CallRail Simulcall</strong> for admissions (if Colin/Tyler don't answer).
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="text-sm text-gray-600 mt-4">
+                Please note: The entire workflow is currently active 24/7 without separate day/night attendants.
+            </p>
+        </section>
+    </main>
+
+    <footer class="text-center mt-10 p-6 text-gray-600">
+        <p>&copy; 2025 Chateau Health & Wellness. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
