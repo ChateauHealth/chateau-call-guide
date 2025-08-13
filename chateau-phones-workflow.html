@@ -113,7 +113,7 @@
             <summary class="text-xl"><span role="img" aria-label="phone icon">📞</span> 1. Main Line & Admissions Call Flow</summary>
             <div class="content-body">
                 <p class="mb-4 text-gray-700">
-                    Our primary public-facing number, prominently displayed on our website and Google Business account, is <strong class="text-blue-600">801-877-1272</strong>. When a caller dials this number, it is a <strong>CallRail</strong> number that is now configured to **immediately forward** calls directly to our <strong>Crexendo main auto attendant (385-534-0836)</strong>.
+                    Our primary public-facing number, prominently displayed on our website and Google Business account, is <strong class="text-blue-600">801-877-1272</strong>. When a caller dials this number, it is a <strong>CallRail</strong> number that is now configured to **immediately forward** calls directly to our <strong>Crexendo main auto attendant (385-534-0836)</strong>. From the caller's perspective, this forwarding is seamless and they will hear the Crexendo attendant directly.
                 </p>
 
                 <h3 class="text-lg font-semibold text-gray-800 mt-6 mb-2">Admissions Line Porting Update:</h3>
@@ -137,12 +137,7 @@
 
                 <ul class="list-none list-circle pl-6 text-gray-700 space-y-2">
                     <li>
-                        <strong class="text-blue-600">Option 1 (Admissions / Simulcall):</strong> Immediately dials our <strong>CallRail number 385-203-8631</strong>. This triggers the Simulcall workflow to:
-                        <ul class="list-disc pl-6 mt-1 space-y-1">
-                            <li>**First Attempt (15s ring):** <strong>Colin (801-819-8772)</strong> & <strong>Tyler (801-669-1248)</strong>.</li>
-                            <li>**If no answer:** Second Attempt: <strong>Colin</strong>, <strong>Tyler</strong>, <strong>Brad (405-245-5139)</strong>, & <strong>Kevin (385-539-8326)</strong>.</li>
-                            <li>**If still no answer:** Call is directed to a <strong>CallRail Voicemail</strong>.</li>
-                        </ul>
+                        <strong class="text-blue-600">Option 1 (Client Callback / Front Desk Voicemail):</strong> Automatically connects to the <strong>Front Desk voicemail (Ext. 1000)</strong>.
                     </li>
                     <li>
                         <strong class="text-blue-600">Option 2 (Therapist Voicemail Attendant):</strong> Leads to a separate sub-menu for leaving messages for specific therapists. This is Ext. 9003.
@@ -234,25 +229,14 @@
                 </div>
 
                 <div class="flow-indent">
-                    <div class="flow-arrow">↓ Option 1 (Admissions)</div>
+                    <div class="flow-arrow">↓ Option 1 (Client Callback / Front Desk Voicemail)</div>
                     <div class="flow-box bg-blue-50">
-                        <strong>Dials CallRail Number: 385-203-8631</strong>
-                    </div>
-                    <div class="flow-arrow">↓</div>
-                    <div class="flow-indent">
-                        <div class="flow-box bg-green-50">
-                            <strong>CallRail Admissions Workflow:</strong>
-                            <ul class="list-none text-sm ml-2 mt-1 space-y-0.5">
-                                <li>➡️ Simulcall 1 (15s): <strong>Colin (801-819-8772)</strong> & <strong>Tyler (801-669-1248)</strong></li>
-                                <li>➡️ If no answer: Simulcall 2: <strong>Colin</strong>, <strong>Tyler</strong>, <strong>Brad (405-245-5139)</strong>, & <strong>Kevin (385-539-8326)</strong></li>
-                                <li>➡️ If no answer: <strong>CallRail Voicemail</strong></li>
-                            </ul>
-                        </div>
+                        <strong>Connects to Front Desk Voicemail (Ext. 1000)</strong>
                     </div>
                 </div>
 
                 <div class="flow-indent" style="margin-top: 1.5rem;">
-                    <div class="flow-arrow">↓ Option 2 (Other Inquiries)</div>
+                    <div class="flow-arrow">↓ Option 2 (Therapist Voicemail Attendant)</div>
                     <div class="flow-box bg-purple-50">
                         <strong>Crexendo Main Auto Attendant Options:</strong>
                         <div class="text-xs text-gray-600 mt-1">"If you know your parties extension dial it now..."</div>
@@ -343,7 +327,7 @@
                             <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">385-203-8631</td>
                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">CallRail Admissions Destination (Analytics)</td>
                             <td class="px-6 py-4 text-sm text-gray-700">
-                                This number is a <strong>CallRail</strong> internal number, used to collect analytical data for admissions calls. Triggers Simulcall workflow for 801-877-1272 Option 1.
+                                This number is a <strong>CallRail</strong> internal number, used to collect analytical data for admissions calls.
                             </td>
                         </tr>
                         <tr>
@@ -352,7 +336,7 @@
                             <td class="px-6 py-4 text-sm text-gray-700">
                                 Primary attendant in <strong>Crexendo</strong>. Handles initial options for calls from 801-877-1272.
                                 <ul class="list-disc list-inside mt-1 space-y-0.5">
-                                    <li><strong>Option 1 (Admissions):</strong> Dials 385-203-8631 (CallRail Simulcall).</li>
+                                    <li><strong>Option 1 (Callback):</strong> Front Desk Voicemail (Ext. 1000).</li>
                                     <li><strong>Option 2 (Therapist VM):</strong> Ext. 9003 (Therapist Auto Attendant).</li>
                                     <li><strong>Option 3 (Client Callback/Program Staff):</strong> Ext. 1001 (Lobby W Voicemail).</li>
                                     <li><strong>Option 4 (Records/Fax/Address):</strong> Ext. 9001 (Recorded message).</li>
