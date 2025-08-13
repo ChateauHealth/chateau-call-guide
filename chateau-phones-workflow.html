@@ -137,23 +137,15 @@
 
                 <ul class="list-none list-circle pl-6 text-gray-700 space-y-2">
                     <li>
-                        <strong class="text-blue-600">Option 1 (Client Callback / Front Desk Voicemail):</strong> Automatically connects to the <strong>Front Desk voicemail (Ext. 1000)</strong>.
+                        <strong class="text-blue-600">Option 1 (Admissions / CallRail Loop):</strong> Despite the spoken prompt "To request a call back and leave a message", pressing 1 will **loop the caller back to CallRail**, specifically dialing the admissions number <strong class="text-blue-600">385-203-8631</strong>. This triggers the Simulcall workflow to:
+                        <ul class="list-disc pl-6 mt-1 space-y-1">
+                            <li>**First Attempt (15s ring):** <strong>Colin (801-819-8772)</strong> & <strong>Tyler (801-669-1248)</strong>.</li>
+                            <li>**If no answer:** Second Attempt: <strong>Colin</strong>, <strong>Tyler</strong>, <strong>Brad (405-245-5139)</strong>, & <strong>Kevin (385-539-8326)</strong>.</li>
+                            <li>**If still no answer:** Call is directed to a <strong>CallRail Voicemail</strong>.</li>
+                        </ul>
                     </li>
                     <li>
-                        <strong class="text-blue-600">Option 2 (Therapist Voicemail Attendant):</strong> Leads to a separate sub-menu for leaving messages for specific therapists. This is Ext. 9003.
-                        <h4 class="text-md font-medium text-gray-700 mt-2 mb-1">Therapist Voicemail Attendant Message:</h4>
-                        <pre class="bg-gray-100 p-4 rounded-lg text-sm whitespace-pre-wrap mb-2 border border-gray-200">
-"If you would like to leave a message for Clinical Director, Ben Pearson press one. to leave a message for Alan Brock, press 2. for Hannah Leema, press 3. For Jackie Nielsen, press 4. For Maren Eberhard, press 5. For Shannon Weaver or Nancy Luke, Press 6. For Rob James, press 7. For Stacey Stocking, press 8. To repeat these options, press 0."</pre>
-                        <ul class="list-disc pl-6 mt-1 space-y-1">
-                            <li>Ben Pearson: Ext. 1011</li>
-                            <li>Alan Brock: Ext. 1012</li>
-                            <li>Hannah Leema: Ext. 1007</li>
-                            <li>Jackie Nielsen: Ext. 1008</li>
-                            <li>Maren Eberhard: Ext. 1006</li>
-                            <li>Shannon Weaver / Nancy Luke: Ext. 1013 (Voicemail connected to Shannon's phone in Crexendo)</li>
-                            <li>Rob James: Ext. 1015</li>
-                            <li>Stacey Stocking: Ext. 1005</li>
-                        </ul>
+                        <strong class="text-blue-600">Option 2 (Front Desk):</strong> Despite the spoken prompt "To leave a message for a therapist or counselor", pressing 2 will direct the caller to the <strong>Front Desk (Ext. 1000)</strong>.
                     </li>
                     <li>
                         <strong class="text-blue-600">Option 3 (Client Callback / Program Staff):</strong> Connects to the <strong>West Wing program staff voicemail (Lobby W - Ext. 1001)</strong>.
@@ -177,7 +169,7 @@
                         <strong class="text-blue-600">Option 5 (Medical Department):</strong> Directs the caller to the <strong>Medical Department (Ext. 1003)</strong>.
                     </li>
                     <li>
-                        <strong class="text-blue-600">Option 6 (Front Desk):</strong> Directs the caller to the <strong>Front Desk (Ext. 1000)</strong>.
+                        <strong class="text-blue-600">Option 6 (Front Desk):</strong> Directs the caller to the <strong>Front Desk (Ext. 1000)</strong>. (Note: This is an alternative path to the Front Desk, also covered by Option 2's routing.)
                     </li>
                 </ul>
             </div>
@@ -216,38 +208,74 @@
             <h2 class="text-2xl font-bold text-gray-800 mb-4"><span role="img" aria-label="flowchart icon">➡️</span> Call Flow Overview (Hierarchical Structure)</h2>
 
             <div class="mb-6">
-                <h3 class="text-lg font-semibold text-gray-800 mb-2">Primary Inbound Call Flow:</h3>
+                <h3 class="text-lg font-semibold text-gray-800 mb-2">Primary Inbound Call Flow (from 801-877-1272):</h3>
                 <div class="flow-box">
                     <strong>📞 Main Public Line: 801-877-1272</strong><br/>
                     (Located in <strong>CallRail</strong>, public-facing)
                 </div>
-                <div class="flow-arrow">↓ Direct Forwarding</div>
+                <div class="flow-arrow">↓ Direct Forwarding by CallRail</div>
 
                 <div class="flow-box">
                     <strong>🏢 Crexendo Main Auto Attendant: 385-534-0836</strong>
-                    <div class="text-xs text-gray-600 mt-1">"Thank you for calling Chateau Health & Wellness..."</div>
+                    <div class="text-xs text-gray-600 mt-1">"Thank you for calling Chateau Health & Wellness... (Caller hears Crexendo prompt directly)"</div>
                 </div>
 
                 <div class="flow-indent">
-                    <div class="flow-arrow">↓ Option 1 (Client Callback / Front Desk Voicemail)</div>
+                    <div class="flow-arrow">↓ If caller presses 1 (Admissions)</div>
                     <div class="flow-box bg-blue-50">
-                        <strong>Connects to Front Desk Voicemail (Ext. 1000)</strong>
+                        <strong>Dials CallRail Admissions Number: 385-203-8631</strong><br/>
+                        (This triggers CallRail's Simulcall workflow)
+                    </div>
+                    <div class="flow-arrow">↓</div>
+                    <div class="flow-indent">
+                        <div class="flow-box bg-green-50">
+                            <strong>CallRail Admissions Workflow:</strong>
+                            <ul class="list-none text-sm ml-2 mt-1 space-y-0.5">
+                                <li>➡️ Simulcall 1 (15s): <strong>Colin (801-819-8772)</strong> & <strong>Tyler (801-669-1248)</strong></li>
+                                <li>➡️ If no answer: Simulcall 2: <strong>Colin</strong>, <strong>Tyler</strong>, <strong>Brad (405-245-5139)</strong>, & <strong>Kevin (385-539-8326)</strong></li>
+                                <li>➡️ If no answer: <strong>CallRail Voicemail</strong></li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
 
                 <div class="flow-indent" style="margin-top: 1.5rem;">
-                    <div class="flow-arrow">↓ Option 2 (Therapist Voicemail Attendant)</div>
+                    <div class="flow-arrow">↓ If caller presses 2 (Front Desk)</div>
                     <div class="flow-box bg-purple-50">
-                        <strong>Crexendo Main Auto Attendant Options:</strong>
-                        <div class="text-xs text-gray-600 mt-1">"If you know your parties extension dial it now..."</div>
-                        <ul class="list-none text-sm ml-2 mt-1 space-y-0.5">
-                            <li>➡️ <strong>Option 1 (Ext. 1000):</strong> Front Desk Voicemail</li>
-                            <li>➡️ <strong>Option 2 (Ext. 9003):</strong> Therapist Auto Attendant</li>
-                            <li>➡️ <strong>Option 3 (Ext. 1001):</strong> West Wing Program Staff Voicemail (Lobby W)</li>
-                            <li>➡️ <strong>Option 4 (Ext. 9001):</strong> Recorded Message (Records/Fax/Address)</li>
-                            <li>➡️ <strong>Option 5 (Ext. 1003):</strong> Medical Department</li>
-                            <li>➡️ <strong>Option 6 (Ext. 1000):</strong> Front Desk</li>
-                        </ul>
+                        <strong>Connects to Crexendo Front Desk (Ext. 1000)</strong>
+                    </div>
+                </div>
+
+                <div class="flow-indent" style="margin-top: 1.5rem;">
+                    <div class="flow-arrow">↓ If caller presses 3 (Client Callback / Program Staff)</div>
+                    <div class="flow-box bg-yellow-50">
+                        <strong>West Wing Program Staff Voicemail (Lobby W - Ext. 1001)</strong><br/>
+                        (Emails to `support@chateaurecovery.com`)
+                    </div>
+                </div>
+                <div class="flow-indent" style="margin-top: 1.5rem;">
+                    <div class="flow-arrow">↓ If caller presses 4 (Records/Fax/Address)</div>
+                    <div class="flow-box bg-orange-50">
+                        <strong>Recorded Message (Ext. 9001)</strong><br/>
+                        (Details Fax: 435-654-1485, Email: `records@chateaurecovery.com`, Address)
+                    </div>
+                </div>
+                <div class="flow-indent" style="margin-top: 1.5rem;">
+                    <div class="flow-arrow">↓ If caller presses 5 (Medical Department)</div>
+                    <div class="flow-box bg-red-50">
+                        <strong>Medical Department (Ext. 1003)</strong>
+                    </div>
+                </div>
+                <div class="flow-indent" style="margin-top: 1.5rem;">
+                    <div class="flow-arrow">↓ If caller presses 6 (Front Desk)</div>
+                    <div class="flow-box bg-purple-50">
+                        <strong>Connects to Crexendo Front Desk (Ext. 1000)</strong>
+                    </div>
+                </div>
+                <div class="flow-indent" style="margin-top: 1.5rem;">
+                    <div class="flow-arrow">↓ If caller presses 0 (Repeat Options)</div>
+                    <div class="flow-box bg-gray-50">
+                        <strong>Repeats Crexendo Main Auto Attendant</strong>
                     </div>
                 </div>
             </div>
@@ -336,8 +364,8 @@
                             <td class="px-6 py-4 text-sm text-gray-700">
                                 Primary attendant in <strong>Crexendo</strong>. Handles initial options for calls from 801-877-1272.
                                 <ul class="list-disc list-inside mt-1 space-y-0.5">
-                                    <li><strong>Option 1 (Callback):</strong> Front Desk Voicemail (Ext. 1000).</li>
-                                    <li><strong>Option 2 (Therapist VM):</strong> Ext. 9003 (Therapist Auto Attendant).</li>
+                                    <li><strong>Option 1 (Admissions):</strong> Dials 385-203-8631 (CallRail Simulcall).</li>
+                                    <li><strong>Option 2 (Front Desk):</strong> Ext. 1000.</li>
                                     <li><strong>Option 3 (Client Callback/Program Staff):</strong> Ext. 1001 (Lobby W Voicemail).</li>
                                     <li><strong>Option 4 (Records/Fax/Address):</strong> Ext. 9001 (Recorded message).</li>
                                     <li><strong>Option 5 (Medical Dept.):</strong> Ext. 1003.</li>
@@ -414,5 +442,3 @@
 
 </body>
 </html>
-
-
